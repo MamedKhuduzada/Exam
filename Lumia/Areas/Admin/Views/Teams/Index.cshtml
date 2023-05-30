@@ -1,0 +1,53 @@
+﻿@using Lumia.Models;
+@model List<Team>
+@{
+	int count = 1;
+}
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Table with stripped rows</h5>
+		<a asp-controller="Teams" asp-action="Create">
+			<button type="button" class="btn btn-outline-success">Create</button>
+		</a>
+		<!-- Table with stripped rows -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Profile</th>
+					<th scope="col">FullName</th>
+					<th scope="col">Position</th>
+					<th scope="col">Settings</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (Team item in Model)
+				{
+					<tr>
+						<th scope="row">@count</th>
+						<td>
+							<img src="~/assets/img/team/@item.ImageName" style="width:100px;" />
+						</td>
+						<td>@item.Name @item.Surname</td>
+						<td>@item.JobId</td>
+						<td>
+							<a asp-action="Details" asp-route-id="@item.Id">
+								<button type="submit" class="btn btn-outline-info">Details</button>
+							</a>
+							<a asp-action="Edit" asp-route-id="@item.Id">
+								<button type="submit" class="btn btn-outline-warning">Edit</button>
+							</a>
+							<form asp-action="Delete" asp-route-id="@item.Id">
+								<button type="submit" class="btn btn-outline-danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+					@(count++)
+
+				}
+			</tbody>
+		</table>
+		<!-- End Table with stripped rows -->
+
+	</div>
+</div>

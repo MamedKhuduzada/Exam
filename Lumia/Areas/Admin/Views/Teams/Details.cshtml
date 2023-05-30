@@ -1,0 +1,11 @@
+﻿@using Lumia.Models;
+@model Team
+
+<div class="card" style="width: 18rem;">
+     <img class="card-img-top" src="~/assets/img/team/@Model.ImageName" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">@Model.Name @Model.Surname</h5>
+    <p class="card-text">@Model.Description</p>
+   
+  </div>
+</div>
